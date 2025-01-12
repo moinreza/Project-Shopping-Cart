@@ -240,18 +240,37 @@ header button:hover {
   z-index: 1000;
 }
 
-/* Specific product hover effects */
-.earbuds-card:hover {
-  transform: scale(1.1); /* Zoom effect */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+/* Promo Code Section */
+#promo-section {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.laptop-card:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); /* Strong shadow */
+#promo-code {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
 }
 
-.smartphone-card:hover {
-  transform: scale(1.07); /* Medium zoom effect */
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3); /* Medium shadow */
+#apply-promo {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+#apply-promo:hover {
+  background-color: #0056b3;
+}
+
+#discount-info {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #28a745;
 }
