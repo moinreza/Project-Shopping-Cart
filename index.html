@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
+      <div class="header-container">
         <h1>Shopping Cart</h1>
-        <div class="cart-info">
-            <p>Cart Items: <span id="cart-count">0</span></p>
-        </div>
+        <button id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+      </div>
     </header>
+
     <main>
-        <section id="product-list"></section>
-        <section id="cart">
-            <h2>Cart</h2>
-            <div id="cart-items"></div>
-            <p>Total: $<span id="total-price">0.00</span></p>
-            <button id="clear-cart">Clear Cart</button>
-        </section>
+      <section id="products" class="products-container"></section>
     </main>
-    <script src="script.js" defer></script>
-</body>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-content">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total">
+          <strong>Total: $<span id="total-price">0.00</span></strong>
+        </div>
+        <div class="cart-actions">
+          <button id="clear-cart">Clear Cart</button>
+          <button id="checkout-btn">Checkout</button>
+        </div>
+        <button id="close-cart" class="close-btn">Close</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

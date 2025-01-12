@@ -1,80 +1,23 @@
-const productList = document.getElementById('product-list');
-const cartItems = document.getElementById('cart-items');
-const cartCount = document.getElementById('cart-count');
-const totalPrice = document.getElementById('total-price');
-const clearCartBtn = document.getElementById('clear-cart');
-
-let cart = [];
-
-// Fetch products from JSON file
-async function fetchProducts() {
-    const response = await fetch('products.json');
-    const products = await response.json();
-    displayProducts(products);
-}
-
-// Display products
-function displayProducts(products) {
-    products.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.classList.add('product');
-        productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <p>Price: $${product.price.toFixed(2)}</p>
-            <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
-        `;
-        productList.appendChild(productDiv);
-    });
-}
-
-// Add to cart
-function addToCart(id, name, price) {
-    const existingItem = cart.find(item => item.id === id);
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        cart.push({ id, name, price, quantity: 1 });
-    }
-    updateCart();
-}
-
-// Update cart
-function updateCart() {
-    cartItems.innerHTML = '';
-    let total = 0;
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-        const cartItem = document.createElement('div');
-        cartItem.innerHTML = `
-            <p>${item.name} - $${item.price.toFixed(2)} x ${item.quantity}</p>
-            <button onclick="updateQuantity(${item.id}, 1)">+</button>
-            <button onclick="updateQuantity(${item.id}, -1)">-</button>
-        `;
-        cartItems.appendChild(cartItem);
-    });
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    totalPrice.textContent = total.toFixed(2);
-}
-
-// Update quantity
-function updateQuantity(id, change) {
-    const item = cart.find(item => item.id === id);
-    if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-            cart = cart.filter(item => item.id !== id);
-        }
-        updateCart();
-    }
-}
-
-// Clear cart
-clearCartBtn.addEventListener('click', () => {
-    cart = [];
-    updateCart();
-});
-
-// Initialize
-fetchProducts();
+[
+  {
+    "id": 1,
+    "name": "Earbuds",
+    "description": "High-quality wireless earbuds with noise cancellation.",
+    "price": 49.99,
+    "image": "cmf-buds.webp"
+  },
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "description": "Latest model smartphone with amazing features.",
+    "price": 249.99,
+    "image": "Cmf Phone 1.webp"
+  },
+  {
+    "id": 3,
+    "name": "Laptop",
+    "description": "A powerful laptop for gaming and work.",
+    "price": 1200.0,
+    "image": "Gaming laptop.avif"
+  }
+]
